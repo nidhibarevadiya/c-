@@ -35,10 +35,40 @@ void inserttail(int data){
 
    
 }
+void addone(){
+    NODE *temp=head;
+    while(temp){
+        temp->data=temp->data+1;
+        temp=temp->next;
+    }
+}
+
+void insertathead(int value){
+    NODE *newnode = new NODE(value);
+    if(head == nullptr){
+        head = newnode;
+        return;
+    }
+    newnode -> next=head;
+    head=newnode;
+}
+
+void removeatend(){
+    NODE *temp =head;
+    while(temp->next->next){
+     
+       
+        temp = temp->next;
+    }
+    temp->next=nullptr;
+}
+
+
 void printlist(){
     NODE *temp =head;
     while(temp){
-        cout << temp->data <<"="<<temp->next<<"->";
+        cout << temp->data <<" -> ";        //   <<"="<<temp->next<<"->";     
+       
         temp = temp->next;
     }
 }
@@ -52,12 +82,11 @@ list->inserttail(10);
 list->inserttail(20);
 list->inserttail(30);
 list->inserttail(40);
+// list->addone();
 
-list->inserttail(10);
-list->inserttail(20);
-list->inserttail(30);
-list->inserttail(40);
-
+list->insertathead(5);
+list->removeatend();
+list->removeatend();
 
 list->printlist();
 
