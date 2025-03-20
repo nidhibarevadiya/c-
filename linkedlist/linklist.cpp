@@ -63,6 +63,41 @@ void removeatend(){
     temp->next=nullptr;
 }
 
+void insertatanyposition(int value,int position){
+    if(position <= 1){
+        this -> insertathead(value);
+        return;
+    }
+
+    int size = this ->length();
+    if(size <= position){
+        this -> inserttail(value);
+        return;
+    } 
+    
+    NODE *newnode = new NODE(value);
+    int i=1;
+    NODE *temp=head;
+    while(i<position){
+        temp=temp->next;
+        i++;
+    }
+    newnode->next=temp->next;
+    temp->next=newnode;
+
+}
+
+int length(){
+    int count=0;
+    NODE *temp =head;
+    while(temp){
+            
+       count++;
+        temp = temp->next;
+    }
+   return count;
+}
+
 
 void printlist(){
     NODE *temp =head;
@@ -71,6 +106,7 @@ void printlist(){
        
         temp = temp->next;
     }
+    cout<<endl;
 }
 };
 
@@ -85,11 +121,14 @@ list->inserttail(40);
 // list->addone();
 
 list->insertathead(5);
+list->insertathead(1);
 list->removeatend();
 list->removeatend();
 
 list->printlist();
+list-> insertatanyposition(100,100);
 
-
+list->printlist();
+cout<<list-> length();
     return 0;
 }
