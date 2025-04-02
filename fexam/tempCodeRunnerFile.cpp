@@ -1,0 +1,1 @@
+  cout << queue->getfront() << endl;
